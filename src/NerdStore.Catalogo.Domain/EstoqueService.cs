@@ -16,7 +16,7 @@ namespace NerdStore.Catalogo.Domain
                               IMediatrHandler bus)
         {
             _produtoRepository = produtoRepository;
-           // _bus = bus;
+            _bus = bus;
         }
         public async Task<bool> DebitarEstoque(Guid produtoId, int quantidade)
         {
@@ -32,6 +32,8 @@ namespace NerdStore.Catalogo.Domain
             if (produto.QuantidadeEstoque < 10)
             {
                 await _bus.PublicarEvento(new ProdutoAbaixoEstoqueEvent(produto.Id, produto.QuantidadeEstoque));
+                //ProdutoAbaixoEstoqueEvent Produto = new ProdutoAbaixoEstoqueEvent(produto.Id, produto.QuantidadeEstoque);
+                //await _bus.PublicarEvento(Produto);
             }
 
             _produtoRepository.Atualizar(produto);
