@@ -20,6 +20,6 @@ namespace NerdStore.Vendas.Domain
         void AtualizarItem(PedidoItem pedidoItem);
         void RemoverItem(PedidoItem pedidoItem);
 
-        //Task<Voucher> ObterVoucherPorCodigo(string codigo);
+        Task<Voucher> ObterVoucherPorCodigo(string codigo);
     }
 }
