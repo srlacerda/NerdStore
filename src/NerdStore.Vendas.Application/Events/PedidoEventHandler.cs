@@ -13,7 +13,7 @@ namespace NerdStore.Vendas.Application.Events
             INotificationHandler<PedidoRascunhoIniciadoEvent>,
             INotificationHandler<PedidoAtualizadoEvent>,
             INotificationHandler<PedidoItemAdicionadoEvent>,
-            INotificationHandler<PedidoEstoqueRejeitadoEvent>,
+            INotificationHandler<PedidoEstoqueRejeitadoEvent>
     {
 
         private readonly IMediatorHandler _mediatorHandler;
@@ -38,7 +38,7 @@ namespace NerdStore.Vendas.Application.Events
             return Task.CompletedTask;
         }
 
-        public async Task Handle(PedidoEstoqueRejeitadoEvent message, CancellationToken cancellationToken)
+        public Task Handle(PedidoEstoqueRejeitadoEvent message, CancellationToken cancellationToken)
         {
             //cancelar o processamento do pedido - retornar erro para o cliente
             //await _mediatorHandler.EnviarComando(new CancelarProcessamentoPedidoCommand(message.PedidoId, message.ClienteId));
